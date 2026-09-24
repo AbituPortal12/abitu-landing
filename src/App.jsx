@@ -39,36 +39,11 @@ const Check = ({ className = "w-5 h-5" }) => (
   </Icon>
 );
 
-const Sparkles = ({ className = "w-5 h-5" }) => (
-  <Icon className={className}>
-    <path d="m12 3-1.2 3.8L7 8l3.8 1.2L12 13l1.2-3.8L17 8l-3.8-1.2L12 3Z" />
-    <path d="m19 14-.7 2.3L16 17l2.3.7L19 20l.7-2.3L19 14Z" />
-    <path d="m5 14-.7 1.8L2 16.5l2.3.7L5 20l.7-2.8 2.3-.7-2.3-.7L5 14Z" />
-  </Icon>
-);
-
 const Chart = ({ className = "w-5 h-5" }) => (
   <Icon className={className}>
     <path d="M4 19V5" />
     <path d="M4 19h16" />
     <path d="m7 15 3-4 3 2 5-7" />
-  </Icon>
-);
-
-const Book = ({ className = "w-5 h-5" }) => (
-  <Icon className={className}>
-    <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5v-16Z" />
-    <path d="M4 5.5v16" />
-    <path d="M8 7h8" />
-    <path d="M8 11h7" />
-  </Icon>
-);
-
-const Target = ({ className = "w-5 h-5" }) => (
-  <Icon className={className}>
-    <circle cx="12" cy="12" r="8" />
-    <circle cx="12" cy="12" r="4" />
-    <circle cx="12" cy="12" r="1" />
   </Icon>
 );
 
@@ -299,7 +274,7 @@ const faqItems = [
   },
   {
     q: "რა ღირს Abitu?",
-    a: "Abitu-ს გამოწერის ღირებულება არის თვეში 7.99 ლარი, ხოლო წელიწადში 67 ლარი.",
+    a: "Abitu-ს გამოწერის ღირებულება არის თვეში 7.99 ლარი, ხოლო წელიწადში 67.12 ლარი.",
   },
   {
     q: "შემიძლია წინა წლების ტესტების გამოყენება?",
@@ -545,7 +520,7 @@ function CalculatorVisual() {
    FULLSCREEN MENU
 ========================================================= */
 
-function FullMenu({ open, onClose, onNavigate }) {
+function FullMenu({ open, onClose, onNavigate, goToApp }) {
   return (
     <div
       className={`fixed inset-0 z-100 h-screen overflow-hidden bg-[#0B1424]/80 text-white backdrop-blur-md transition-opacity duration-300 ${
@@ -594,7 +569,7 @@ function FullMenu({ open, onClose, onNavigate }) {
             ))}
 
             <button
-              onClick={() => onNavigate("pricing")}
+              onClick={goToApp}
               className="mt-5 inline-flex h-10 w-fit items-center gap-2 rounded-lg bg-[#00C58B] px-5 text-xs font-bold text-[#0E172B] transition hover:bg-[#00E0A0]"
             >
               შესვლა / რეგისტრაცია
@@ -693,6 +668,14 @@ export default function App() {
   const [heroSlide, setHeroSlide] = useState(0);
 
   /* =========================================================
+     APP LOGIN / REGISTRATION
+  ========================================================= */
+
+  const goToApp = () => {
+    window.location.href = "https://app.abitu.ge";
+  };
+
+  /* =========================================================
      EMAILJS CONTACT FORM
   ========================================================= */
 
@@ -751,7 +734,10 @@ export default function App() {
     }
   };
 
-  /* LOCK SCROLL WHEN MENU OPEN */
+  /* =========================================================
+     LOCK SCROLL WHEN MENU OPEN
+  ========================================================= */
+
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
 
@@ -760,7 +746,10 @@ export default function App() {
     };
   }, [menuOpen]);
 
-  /* HERO AUTOPLAY */
+  /* =========================================================
+     HERO AUTOPLAY
+  ========================================================= */
+
   useEffect(() => {
     const timer = setInterval(() => {
       setHeroSlide((current) => {
@@ -770,6 +759,10 @@ export default function App() {
 
     return () => clearInterval(timer);
   }, []);
+
+  /* =========================================================
+     NAVIGATION
+  ========================================================= */
 
   const scrollTo = (id) => {
     const element = document.getElementById(id);
@@ -812,7 +805,10 @@ export default function App() {
           </button>
 
           <div className="flex items-center gap-3">
-            <button className="hidden text-sm font-semibold text-[#0E172B] transition hover:text-[#00A97A] sm:inline-flex">
+            <button
+              onClick={goToApp}
+              className="hidden text-sm font-semibold text-[#0E172B] transition hover:text-[#00A97A] sm:inline-flex"
+            >
               შესვლა
             </button>
 
@@ -831,6 +827,7 @@ export default function App() {
         open={menuOpen}
         onClose={() => setMenuOpen(false)}
         onNavigate={scrollTo}
+        goToApp={goToApp}
       />
 
       {/* =====================================================
@@ -948,13 +945,7 @@ export default function App() {
                     "
                   >
                     <button
-                      onClick={() =>
-                        scrollTo(
-                          slide.type === "calculator"
-                            ? "university"
-                            : "pricing",
-                        )
-                      }
+                      onClick={goToApp}
                       className="
                         group
                         inline-flex
@@ -1072,7 +1063,7 @@ export default function App() {
                   >
                     <img
                       src={slide.image}
-                      alt={slide.title}
+                      alt="Abitu"
                       draggable="false"
                       onContextMenu={(e) => e.preventDefault()}
                       className="relative z-10 w-auto object-cover pointer-events-none select-none"
@@ -1291,16 +1282,7 @@ export default function App() {
 
                 <div className="mt-6 flex items-center gap-2 text-sm font-bold text-[#00A97A] opacity-0 transition group-hover:opacity-100">
                   გაიგე მეტი
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    className="h-4 w-4"
-                  >
-                    <path d="M5 12h14" />
-                    <path d="m13 6 6 6-6 6" />
-                  </svg>
+                  <ArrowRight className="h-4 w-4" />
                 </div>
               </div>
             ))}
@@ -1468,8 +1450,6 @@ export default function App() {
             </div>
 
             <div className="rounded-2xl bg-white p-6">
-              <div className="flex items-center justify-between" />
-
               <img src="completed-tests.png" alt="completed tests" />
             </div>
           </div>
@@ -1613,7 +1593,7 @@ export default function App() {
                 </p>
 
                 <button
-                  onClick={() => scrollTo("pricing")}
+                  onClick={goToApp}
                   className="mt-8 inline-flex h-12 items-center gap-2 rounded-lg bg-[#00C58B] px-6 text-sm font-bold text-white transition hover:bg-[#00B17D]"
                 >
                   დაიწყე ახლა
@@ -1697,7 +1677,10 @@ export default function App() {
               </div>
 
               <div className="mt-8">
-                <button className="flex h-12 w-full items-center justify-center gap-2 rounded-lg border border-slate-200 text-sm font-bold text-[#0E172B] transition hover:bg-slate-50">
+                <button
+                  onClick={goToApp}
+                  className="flex h-12 w-full items-center justify-center gap-2 rounded-lg border border-slate-200 text-sm font-bold text-[#0E172B] transition hover:bg-slate-50"
+                >
                   დაიწყე Abitu-ს გამოყენება
                   <ArrowRight className="h-4 w-4" />
                 </button>
@@ -1752,7 +1735,10 @@ export default function App() {
               </div>
 
               <div className="mt-8">
-                <button className="flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#00C58B] text-sm font-bold text-white transition hover:bg-[#00B17D]">
+                <button
+                  onClick={goToApp}
+                  className="flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#00C58B] text-sm font-bold text-white transition hover:bg-[#00B17D]"
+                >
                   დაიწყე Abitu-ს გამოყენება
                   <ArrowRight className="h-4 w-4" />
                 </button>
@@ -1937,20 +1923,11 @@ export default function App() {
                 </p>
 
                 <button
-                  onClick={() => scrollTo("pricing")}
+                  onClick={goToApp}
                   className="mt-8 inline-flex h-12 items-center gap-2 rounded-lg bg-[#00A97A] px-7 text-sm font-bold text-white transition hover:bg-[#008F68]"
                 >
                   დაიწყე Abitu-ს გამოყენება
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    className="h-4 w-4"
-                  >
-                    <path d="M5 12h14" />
-                    <path d="m13 6 6 6-6 6" />
-                  </svg>
+                  <ArrowRight className="h-4 w-4" />
                 </button>
               </div>
 
