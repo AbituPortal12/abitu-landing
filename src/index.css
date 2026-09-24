@@ -1,0 +1,192 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700;800;900&display=swap");
+
+@import "tailwindcss";
+
+:root {
+  font-family: "Noto Sans Georgian", sans-serif;
+
+  color: #111827;
+  background: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #ffffff;
+  color: #111827;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: #00c58b;
+  color: #ffffff;
+}
+
+/* -------------------------------- */
+/* SCROLLBAR                        */
+/* -------------------------------- */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* -------------------------------- */
+/* ABITU THEME                      */
+/* -------------------------------- */
+
+.abitu-green {
+  color: #00c58b;
+}
+
+.abitu-green-bg {
+  background: #00c58b;
+}
+
+.abitu-dark {
+  color: #0e172b;
+}
+
+.abitu-dark-bg {
+  background: #0e172b;
+}
+
+.abitu-light {
+  background: #ecfbf6;
+}
+
+/* -------------------------------- */
+/* REMOVE "AI LOOK"                 */
+/* -------------------------------- */
+
+.no-gradient {
+  background-image: none !important;
+}
+
+.clean-card {
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+}
+
+.clean-card:hover {
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.07);
+}
+
+/* -------------------------------- */
+/* BUTTONS                          */
+/* -------------------------------- */
+
+.abitu-primary {
+  background: #00c58b;
+  color: white;
+  border: 1px solid #00c58b;
+  transition: 0.2s ease;
+}
+
+.abitu-primary:hover {
+  background: #00ad7a;
+  border-color: #00ad7a;
+}
+
+.abitu-outline {
+  background: white;
+  color: #111827;
+  border: 1px solid #dbe3ea;
+  transition: 0.2s ease;
+}
+
+.abitu-outline:hover {
+  border-color: #00c58b;
+  color: #00a979;
+}
+
+/* -------------------------------- */
+/* FORM ELEMENTS                    */
+/* -------------------------------- */
+
+.abitu-input {
+  width: 100%;
+  height: 48px;
+  border: 1px solid #dbe3ea;
+  border-radius: 8px;
+  padding: 0 14px;
+  background: white;
+  color: #111827;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.abitu-input:focus {
+  border-color: #00c58b;
+  box-shadow: 0 0 0 3px rgba(0, 197, 139, 0.1);
+}
+
+.abitu-textarea {
+  width: 100%;
+  border: 1px solid #dbe3ea;
+  border-radius: 8px;
+  padding: 12px 14px;
+  background: white;
+  color: #111827;
+  outline: none;
+  resize: vertical;
+}
+
+.abitu-textarea:focus {
+  border-color: #00c58b;
+  box-shadow: 0 0 0 3px rgba(0, 197, 139, 0.1);
+}
+
+/* -------------------------------- */
+/* MOBILE                           */
+/* -------------------------------- */
+
+@media (max-width: 768px) {
+  h1 {
+    letter-spacing: -0.02em;
+  }
+
+  section {
+    scroll-margin-top: 80px;
+  }
+}
