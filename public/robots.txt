@@ -1,0 +1,42 @@
+# robots.txt for https://abitu.ge
+# Updated for modern crawlers, AI scrapers, and SEO safety
+
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /assets/
+Allow: /images/
+Allow: /favicon.ico
+Allow: /tab-logo.svg
+Allow: /og-image.jpg
+
+# Block user-agents that scrape without consent or create low-quality AI indexes
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPTUser
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /api/
+
+Sitemap: https://abitu.ge/sitemap.xml
+
+Host: https://abitu.ge
